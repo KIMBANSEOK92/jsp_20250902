@@ -11,7 +11,7 @@
 		<%! 
 		String id = "test"; 
 		int pwd = 1234;
-			1111
+		
 		%>
 			
 		<div>
