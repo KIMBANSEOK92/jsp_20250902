@@ -7,31 +7,39 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form name="login" action="Join_Result.jsp">
-		<%!String id = "test92";
-			int pwd = 12345678 ;
-	
-		%>
-
+	<form name="join" action="Join_Result.jsp" method="get">
 
 		<div>
-			<label>아이디 : <input type="test" name="userId"></label>
+			<label>아이디 : <input type="text" name="id"></label>
 		</div>
 
 		<div>
 			<label>비밀번호 : <input type="password" name="pwd"></label>
 		</div>
-		
+
 		<div>
-			<label>비밀번호확인 : <input type="passwordCheck" name="pwd"></label>
+			<label>비밀번호확인 : <input type="password" name="pwd2"></label>
 		</div>
-		
+
 		<div>
-			<label>휴대폰번호 : <input type="phonNumber" name="Number"></label>
+			<label>이름 : <input type="name" name="userName"></label>
 		</div>
-		
+
 		<div>
-			<label>성별 : <input type="reger" name="resert"></label>
+			핸드폰 : <label> <select name="phone">
+					<option value="010">010</option>
+					<option value="016">016</option>
+					<option value="011">011</option>
+					<option value="070">070</option>
+			</select>
+			</label>
+		</div>
+
+		<div>
+			성별 : <label> <input type="radio" name="gender" value="M"
+				checked>남
+			</label> <label> <input type="radio" name="gender" value="F">여
+			</label>
 		</div>
 
 		<div>
@@ -44,25 +52,35 @@
 
 		<div>
 			<input type="submit" value="가입"> <input type="button"
-				value="로그인" onclick="fnCheck()"> <input type="button"
-				value="회원가입">
+				value="로그인" onclick="fnCheck()">
 		</div>
 	</form>
 </body>
 </html>
 <script>
 	function fnCheck() {
-		let login = document.login;
-		if (login.userId.value.length == 0) {
-			alert("아이디를 입력해주세요.");
-			login.userId.focus();
+		let join = document.join;
+		if (join.id.value.length < 6) {
+			alert("아이디는 최소 6글자입니다.");
+			join.id.focus();
 			return;
 		}
-		if (login.pwd.value.length == 0) {
-			alert("비밀번호를 확인해주세요.");
-			login.pwd.focus();
+		if (join.pwd.value.length < 8) {
+			alert("비밀번호는 8글자 이상이어야 합니다.")
+			join.pwd.focus();
 			return;
 		}
-		login.submit();
 	}
+	let pwdRule = flag.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+	if (!pwdRule.test(join.pwd.value)) {
+		alert("비밀번호는 특수문자가 포함되어야합니다.");
+		join.pwd.focus();
+		return;
+	}
+	if (join.userName.value.length == 0) {
+		alert("이름을 입력해주세요.");
+		join.userName.focus();
+		return;
+	}
+	join.submit();}
 </script>
