@@ -10,7 +10,7 @@
 	<form name="login" action="Join_Result.jsp">
 		<%!String id = "test92";
 			int pwd = 12345678 ;
-		sss
+	
 		%>
 
 
