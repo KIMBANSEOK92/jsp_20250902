@@ -36,7 +36,7 @@ tr:nth-child(odd) {
 <div id="container">
 	<div id="search">
 		검색어 : <input type="text" id="keyword">
-				<button onclick="fnSearch">검색</button>
+				 <button onclick="fnSearch()">검색</button>
 	</div>
 	<table>
 		<tr>
@@ -47,50 +47,47 @@ tr:nth-child(odd) {
 		</tr>
 
 	<%
-		ResultSet rs = null;	
-		String keyword = request.getParameter("keyword");
-		
-		String keywordQuery = "";
-		if(keyword != null){
-			keywordQuery = "WHERE TITLE LIKE '%" + keyword + "%'";
-		}
+			ResultSet rs = null;
+			String keyword = request.getParameter("keyword");	
 	
-		String query = "SELECT * FROM STUDENT " + keywordQuery;
-						
-		rs = stmt.executeQuery(query);
-		
-		while(rs.next()){
+			String keywordQuery = "";
+			if(keyword != null){
+				keywordQuery = "WHERE TITLE LIKE '%" + keyword + "%'";
+			}
+	
+			String query = "SELECT * FROM STUDENT ";
+						 
+			rs = stmt.executeQuery(query);
+	
+			while(rs.next()){
 	%>
 		<tr>
 			<td> <%= rs.getString("STU_NO") %></td>
 			<td> 
-				 <a href="Stu_View.jsp?stuNo=<%= rs.getString("STU_NO") %>"><%= rs.getString("STU_NAME") %></a>
+				 <a href="Stu-View.jsp?stuNo=<%= rs.getString("STU_NO") %>"><%= rs.getString("STU_NAME") %></a>
 				 <a href="javascript;" onclick="fnBoard"> </a>
 			</td>
 			<td> <%= rs.getString("STU_DEPT") %></td>
 			<td> <%= rs.getString("STU_HEIGHT") %></td>
 		</tr>
+		
 	<% 		
 		}
 		
-	%>
-		
+	%>		
 	</table>
 </div>
-	
-	
-	
 	
 </body>
 </html>
 <script>
 	function fnBoard(stuNo) {
-		location.href = "Stu_View.jsp?stuNo="+stuNo;
+		location.href = "Stu-View.jsp?stuNo="+stuNo;
 		
 	}
-	function fnSearch() {
+	function fnSearch(){
 		let keyword = document.querySelector("#keyword").value;
-		location.href = "Stu_List.jsp?keyword="+keyword;
+		location.href = "Stu-List.jsp?keyword="+keyword;
 		
 	}
 

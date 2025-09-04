@@ -9,6 +9,10 @@
 </head>
 <body>
 	<h1>메인페이지 입니다.</h1>
+	<%
+		String sessionId = (String) session.getAttribute("sessionId");
+	%>
+	<div><%= sessionId %>님 환영합니다</div>
 	<div>
 		<button>학생관리</button>
 		<button onclick="fnBoard()">게시판관리</button>

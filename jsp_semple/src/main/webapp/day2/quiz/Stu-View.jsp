@@ -34,15 +34,15 @@
 <div id="contesnts">	
 	<% 
 		ResultSet rs = null;
-	 	String stuNo = request.getParameter("stuNo");
+	 	String stuNo = request.getParameter("STU_NO");
 	 	String query = "SELECT * FROM STUDENT "
 	 				   + "WHERE STU_NO = " + stuNo;
 	 	rs = stmt.executeQuery(query);
 	 	if(rs.next()){
 	 %>		
  
-		<form name="student" action="Stu_Remove.jsp">
-		<input name="stuNo" value="<%= rs.getString("STU_NO")%>" hidden>
+		<form name="student" action="Stu-Remove.jsp">
+		<input name="stuNo" value="<%= rs.getString("stuNo")%>" hidden>
 	 	<table>
 	 	  <tr>
 	 	  	<th>학번</th>
@@ -63,6 +63,26 @@
 	 	  	<th>평균점수</th>
 	 	  	<td class="grade"><%= rs.getString("STU_GRADE") %></td>
 	 	  </tr>
+	 	  
+	 	   <tr>
+	 	  	<th>반</th>
+	 	  	<td><%= rs.getString("STU_CLASS") %></td>
+	 	  </tr>
+	 	  
+	 	   <tr>
+	 	  	<th>학과</th>
+	 	  	<td><%= rs.getString("STU_GENDER") %></td>
+	 	  </tr>
+	 	   
+	 	   <tr>
+	 	  	<th>키</th>
+	 	  	<td><%= rs.getString("STU_HEIGHT") %></td>
+	 	  </tr>
+	 	  
+	 	  <tr>
+	 	  	<th>몸무게</th>
+	 	  	<td><%= rs.getString("STU_WEIGHT") %></td>
+	 	  </tr>
 	 	
 	 	</table>
 	 	<div>
@@ -78,7 +98,7 @@
 	
 	</table>	
 	</div>	
-</body>
+
 
 </html>
 <script>

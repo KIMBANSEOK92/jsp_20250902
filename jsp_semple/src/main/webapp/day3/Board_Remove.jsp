@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="db.jsp" %>
+	<%@ include file="../db.jsp" %>
 	<% 
-		String stuNo = request.getParameter("stuNo");
-		String query = "DELETE FROM STUDENT"
-						+ "WHERE STU_NO = " + stuNo;
+		String boardNo = request.getParameter("boardNo");
+		String query = "DELETE FROM TBL_BOARD"
+						+ "WHERE BOARDNO = " + boardNo;
 		int result = stmt.executeUpdate(query);
 		if(result > 0) {
 			out.println("삭제 되었습니다.");		
@@ -20,7 +20,7 @@
 		}
 	%>
 	<div>
-		<a href="Stu-List.jsp"><button>목록으로</button></a>
+		<a herf="Board_List.jsp"><button>목록으로</button></a>
 	</div>	
 </body>
 </html>
